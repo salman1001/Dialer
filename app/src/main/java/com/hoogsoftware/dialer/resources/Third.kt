@@ -1,6 +1,9 @@
 package com.hoogsoftware.dialer.resources
+
 import android.Manifest
 import android.annotation.SuppressLint
+import android.app.NotificationChannel
+import android.app.NotificationManager
 import android.content.*
 import android.content.ContentValues.TAG
 import android.content.pm.PackageManager
@@ -23,6 +26,7 @@ import androidx.annotation.RequiresPermission
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import androidx.lifecycle.Observer
 import androidx.lifecycle.asLiveData
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -31,6 +35,7 @@ import com.hoogsoftware.dialer.R
 import com.hoogsoftware.dialer.resources.cache.Cache
 import com.hoogsoftware.dialer.resources.cache.ViewModelSaveToken
 import com.hoogsoftware.dialer.resources.callreciever.CallBroadcastReceiver
+import com.hoogsoftware.dialer.resources.callreciever.Mess
 import com.hoogsoftware.dialer.resources.callreciever.PhoneCall
 import com.hoogsoftware.dialer.resources.network.CallInfo
 import com.hoogsoftware.dialer.resources.network.RestApiSerVice
@@ -45,7 +50,7 @@ import java.text.DateFormat
 import java.text.ParseException
 import java.text.SimpleDateFormat
 import java.util.*
-import kotlin.math.log
+
 
 class Third : AppCompatActivity() {
 
@@ -119,6 +124,7 @@ private var callLogModelArrayList= ArrayList<CallLogModel>()
         setContentView(R.layout.activity_main)
 
         supportActionBar!!.title = "Call Logs"
+        createNotificationChannel()
 
         Init()
         getPermission()
@@ -484,6 +490,48 @@ private var callLogModelArrayList= ArrayList<CallLogModel>()
         }
         return PhoneCall.Unknown
     }
+    val CHANNEL_ID = "autoStartServiceChannel"
+    val CHANNEL_NAME = "Auto Start Service Channel"
+
+    private fun createNotificationChannel() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            val serviceChannel = NotificationChannel(
+                CHANNEL_ID,
+                CHANNEL_NAME,
+                NotificationManager.IMPORTANCE_DEFAULT
+            )
+            val manager = getSystemService(
+                NotificationManager::class.java
+            )
+            manager.createNotificationChannel(serviceChannel)
+        }
+    }
+
+
+    fun startService(v: View?) {
+        val serviceIntent = Intent(this, Mess::class.java)
+        serviceIntent.putExtra("inputExtra", "passing any text")
+        ContextCompat.startForegroundService(this, serviceIntent)
+    }
+
+    fun stopService(v: View?) {
+        val serviceIntent = Intent(this, Mess::class.java)
+        stopService(serviceIntent)
+    }
 
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
