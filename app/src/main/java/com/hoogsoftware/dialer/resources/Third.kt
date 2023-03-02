@@ -71,12 +71,7 @@ class Third : AppCompatActivity() {
 
 
     }
-
-
-
-
-
-    private var callLogModelArrayList= ArrayList<CallLogModel>()
+private var callLogModelArrayList= ArrayList<CallLogModel>()
     private var rv_call_logs: RecyclerView? = null
     private var callLogAdapter: CallLogAdapter? = null
     var str_number: String? = null
@@ -174,9 +169,6 @@ class Third : AppCompatActivity() {
 //        }
 //        saveData()
 //        loadData()
-
-
-
     }
 
     private fun Init() {

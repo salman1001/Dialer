@@ -70,5 +70,4 @@ class CallBroadcastReceiver : BroadcastReceiver() {
             ActivityCompat.checkSelfPermission(this, it) != PackageManager.PERMISSION_GRANTED
         }).any()
     }
-
 }

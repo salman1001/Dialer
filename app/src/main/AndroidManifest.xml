@@ -63,10 +63,13 @@
 
         <receiver
             android:name=".resources.callreciever.Boot"
-            android:label="StartMyServiceAtBootReceiver"
+            android:label=".resources.callreciever.Boot"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="android.intent.action.REBOOT"/>
+
+
             </intent-filter>
         </receiver>
 
