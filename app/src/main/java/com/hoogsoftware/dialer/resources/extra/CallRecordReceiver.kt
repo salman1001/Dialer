@@ -214,7 +214,6 @@ open class CallRecordReceiver(private var callRecord: CallRecord) : PhoneCallRec
 //                    setOnErrorListener { _, _, _ -> }
 //                }
 //            }
-
 //
 //// Optional: Write data to the file using a FileOutputStream
 //            val outputStream = FileOutputStream(file)
@@ -247,7 +246,7 @@ open class CallRecordReceiver(private var callRecord: CallRecord) : PhoneCallRec
             LogUtils.e(e)
             e.printStackTrace()
             return false
-        }
+       }
     }
 
     private fun releaseMediaRecorder() {
