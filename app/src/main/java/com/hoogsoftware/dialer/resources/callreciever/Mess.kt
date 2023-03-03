@@ -9,11 +9,8 @@ import androidx.annotation.Nullable
 import androidx.core.app.NotificationCompat
 import com.hoogsoftware.dialer.R
 import com.hoogsoftware.dialer.resources.Third
-
-
 class Mess : Service() {
     private val channelId = "i.apps.notifications"
-
     override fun onStartCommand(intent: Intent, flags: Int, startId: Int): Int {
         val input = intent.getStringExtra("inputExtra")
         val notificationIntent = Intent(this, Third::class.java)
@@ -30,11 +27,8 @@ class Mess : Service() {
         val mNotificationManager =
             getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager?
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            val channel = NotificationChannel(
-                channelId,
-                channelId,
-                NotificationManager.IMPORTANCE_DEFAULT
-            )
+            val channel = NotificationChannel(channelId, channelId,
+                NotificationManager.IMPORTANCE_DEFAULT)
             mNotificationManager!!.createNotificationChannel(channel)
             NotificationCompat.Builder(this, channelId)
         }
