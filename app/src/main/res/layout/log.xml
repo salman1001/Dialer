@@ -26,6 +26,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textColor="@color/black"
                 android:textSize="16sp"
                 android:textStyle="bold"
                 android:text="Phone No: "/>
@@ -34,6 +35,8 @@
                 android:id="@+id/layout_call_log_ph_no"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textColor="@color/black"
+
                 android:textSize="16sp"
                 android:text="+919122371784"/>
 
@@ -42,12 +45,15 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+
             android:layout_marginBottom="4dp"
             android:orientation="horizontal">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textColor="@color/black"
+
                 android:textSize="16sp"
                 android:textStyle="bold"
                 android:text="Contact Name: "/>
@@ -56,6 +62,8 @@
                 android:id="@+id/layout_call_log_contact_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textColor="@color/black"
+
                 android:textSize="16sp"
                 android:text="Shubham Raj"/>
 
@@ -65,10 +73,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="4dp"
+            android:textColor="@color/black"
+
             android:orientation="horizontal">
 
             <TextView
                 android:layout_width="wrap_content"
+                android:textColor="@color/black"
+
                 android:layout_height="wrap_content"
                 android:textSize="16sp"
                 android:textStyle="bold"
@@ -78,6 +90,8 @@
                 android:id="@+id/layout_call_log_type"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textColor="@color/black"
+
                 android:textSize="16sp"
                 android:text="In-coming"/>
 
@@ -86,12 +100,16 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textColor="@color/black"
+
             android:layout_marginBottom="4dp"
             android:orientation="horizontal">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textColor="@color/black"
+
                 android:textSize="16sp"
                 android:textStyle="bold"
                 android:text="Call date: "/>
@@ -99,6 +117,8 @@
             <TextView
                 android:id="@+id/layout_call_log_date"
                 android:layout_width="wrap_content"
+                android:textColor="@color/black"
+
                 android:layout_height="wrap_content"
                 android:textSize="16sp"
                 android:text="10 Jul 2020"/>
@@ -108,12 +128,16 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textColor="@color/black"
+
             android:layout_marginBottom="4dp"
             android:orientation="horizontal">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textColor="@color/black"
+
                 android:textSize="16sp"
                 android:textStyle="bold"
                 android:text="Call time: "/>
@@ -121,6 +145,8 @@
             <TextView
                 android:id="@+id/layout_call_log_time"
                 android:layout_width="wrap_content"
+                android:textColor="@color/black"
+
                 android:layout_height="match_parent"
                 android:text="01:00 PM"
                 android:textSize="16sp" />
@@ -130,6 +156,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textColor="@color/black"
+
             android:layout_marginBottom="4dp"
             android:orientation="horizontal">
 
@@ -137,12 +165,16 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="16sp"
+                android:textColor="@color/black"
+
                 android:textStyle="bold"
                 android:text="Call duration: "/>
 
             <TextView
                 android:id="@+id/layout_call_log_duration"
                 android:layout_width="wrap_content"
+                android:textColor="@color/black"
+
                 android:layout_height="wrap_content"
                 android:textSize="16sp"
                 android:text="52 seconds"/>

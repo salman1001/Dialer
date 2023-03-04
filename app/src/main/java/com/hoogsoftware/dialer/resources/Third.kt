@@ -8,6 +8,8 @@ import android.content.*
 import android.content.ContentValues.TAG
 import android.content.pm.PackageManager
 import android.database.Cursor
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.media.MediaPlayer
 import android.media.MediaRecorder
 import android.net.Uri
@@ -32,6 +34,7 @@ import com.hoogsoftware.dialer.resources.extra.CallRecord
 import com.hoogsoftware.dialer.resources.recorder.AudioPlayerImp
 import com.hoogsoftware.dialer.resources.recorder.RecorderImple
 import com.hoogsoftware.dialer.resources.trail.DeviceAdminDemo
+import com.hoogsoftware.dialer.resources.trialJava.Looker
 import com.karumi.dexter.Dexter
 import com.karumi.dexter.DexterBuilder
 import com.karumi.dexter.MultiplePermissionsReport
@@ -62,12 +65,17 @@ private var callLogModelArrayList= ArrayList<CallLogModel>()
     var str_call_duration: String? = null
 
     private fun Init() {
+
+
         rv_call_logs = findViewById(R.id.activity_main_rv)
         rv_call_logs!!.setHasFixedSize(true)
         rv_call_logs!!.layoutManager = LinearLayoutManager(this)
         callLogModelArrayList = ArrayList()
         callLogAdapter = CallLogAdapter(this, callLogModelArrayList)
         rv_call_logs!!.adapter = callLogAdapter
+
+
+
     }
     @SuppressLint("Range")
    fun FetchCallLogs() {
@@ -81,7 +89,7 @@ private var callLogModelArrayList= ArrayList<CallLogModel>()
             sortOrder
         )
 
-        var counter=100;
+        var counter=200;
 
         while (cursor!!.moveToNext()&&counter>=0) {
             counter--
@@ -168,9 +176,24 @@ override fun onCreate(savedInstanceState: Bundle?) {
     setContentView(R.layout.activity_main)
     supportActionBar!!.title = "Call Logs"
     Init()
+    supportActionBar!!.setBackgroundDrawable( ColorDrawable(
+                Color.parseColor("#486BD3")
+            ))
 
     getPermission()
-    var bt=findViewById<Button>(R.id.record_button)
+//    if (activity is AppCompatActivity) {
+//        (activity as AppCompatActivity).setSupportActionBar(binding.toolbar)
+//        (activity as AppCompatActivity).supportActionBar?.title = "Physics"
+//        (activity as AppCompatActivity).supportActionBar?.setBackgroundDrawable(
+//            ColorDrawable(
+//                Color.parseColor("#486BD3")
+//            )
+//        )
+//    }
+
+
+
+
 
 
    // output = Environment.getExternalStorageDirectory().absolutePath + "/recording1232.mp3"
@@ -181,60 +204,64 @@ override fun onCreate(savedInstanceState: Bundle?) {
     mediaRecorder?.setAudioEncoder(MediaRecorder.AudioEncoder.AAC)
     mediaRecorder?.setOutputFile(output)
 
+    val d=Looker()
+    val str=d.di()
+//    Toast.makeText(this,str,Toast.LENGTH_LONG).show()
+  // Log.d(TAG, "onCreate: $str")
 
 
-    bt.setOnClickListener {
-        if (ContextCompat.checkSelfPermission(this,
-                Manifest.permission.RECORD_AUDIO) != PackageManager.PERMISSION_GRANTED && ContextCompat.checkSelfPermission(this,
-                Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
-            val permissions = arrayOf(android.Manifest.permission.RECORD_AUDIO, android.Manifest.permission.WRITE_EXTERNAL_STORAGE, android.Manifest.permission.READ_EXTERNAL_STORAGE)
-            ActivityCompat.requestPermissions(this, permissions,0)
-        } else {
-            if (countyer==0){
 
-                File(cacheDir, "audio.mp3").also {
-                    recorder.start(it)
-                    audioFile = it
-                }
-                Log.d(TAG, "onCreate: s1")
-
-                recorder.start(audioFile!!)
-                Log.d(TAG, "onCreate: s2")
-
-
-//                startRecording()
-//                Log.d(TAG, "onCreate: called1")
-               countyer++;
-
-            }
-            else{
-                Log.d(TAG, "onCreate: s3")
-                recorder.stop()
-                Log.d(TAG, "onCreate: s4")
-
-                player.playFile(audioFile!!)
-                Log.d(TAG, "onCreate: s5")
-
-
-//                stopRecording()
-//               // mediaRecorder
-//
-//                Log.d(TAG, "onCreate: called2")
-//
-//                    Log.d(TAG, "onCreate: 3232")
-//                    mediaPlayer!!.setDataSource(output)
-//                    mediaPlayer!!.prepare()
-//                    mediaPlayer!!.start()
-
-
-//                GlobalScope.launch {
-//                    delay(3000)
-//                    playAudio(mediaRecorder!!)
+//    bt.setOnClickListener {
+//        if (ContextCompat.checkSelfPermission(this,
+//                Manifest.permission.RECORD_AUDIO) != PackageManager.PERMISSION_GRANTED && ContextCompat.checkSelfPermission(this,
+//                Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+//            val permissions = arrayOf(android.Manifest.permission.RECORD_AUDIO, android.Manifest.permission.WRITE_EXTERNAL_STORAGE, android.Manifest.permission.READ_EXTERNAL_STORAGE)
+//            ActivityCompat.requestPermissions(this, permissions,0)
+//        } else {
+//            if (countyer==0){
+//                File(cacheDir, "audio.mp3").also {
+//                    recorder.start(it)
+//                    audioFile = it
 //                }
-
-            }
-        }
-    }
+//                Log.d(TAG, "onCreate: s1")
+//
+//                recorder.start(audioFile!!)
+//                Log.d(TAG, "onCreate: s2")
+//
+//
+////                startRecording()
+////                Log.d(TAG, "onCreate: called1")
+//               countyer++;
+//
+//            }
+//            else{
+//                Log.d(TAG, "onCreate: s3")
+//                recorder.stop()
+//                Log.d(TAG, "onCreate: s4")
+//
+//                player.playFile(audioFile!!)
+//                Log.d(TAG, "onCreate: s5")
+//
+//
+////                stopRecording()
+////               // mediaRecorder
+////
+////                Log.d(TAG, "onCreate: called2")
+////
+////                    Log.d(TAG, "onCreate: 3232")
+////                    mediaPlayer!!.setDataSource(output)
+////                    mediaPlayer!!.prepare()
+////                    mediaPlayer!!.start()
+//
+//
+////                GlobalScope.launch {
+////                    delay(3000)
+////                    playAudio(mediaRecorder!!)
+////                }
+//
+//            }
+//        }
+//    }
 
     try {
         if (!mDPM!!.isAdminActive(mAdminName!!)) {
@@ -371,7 +398,7 @@ lateinit var callRecord:CallRecord
                             getAllCallHistory()
                             FetchCallLogs()
 
-                            Toast.makeText(this@Third, "Permissions Granted", Toast.LENGTH_SHORT).show()
+                            Toast.makeText(this@Third, "Permissions Granted Finally ", Toast.LENGTH_SHORT).show()
                             // showSelectionDialog()
 
                         } else {

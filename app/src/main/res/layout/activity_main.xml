@@ -4,31 +4,62 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+
     android:background="#eee"
     tools:context=".resources.Third"
     android:orientation="horizontal"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <androidx.core.widget.NestedScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+<!--    <androidx.appcompat.widget.Toolbar-->
+<!--        android:id="@+id/toolbar"-->
+<!--        app:layout_constraintBaseline_toTopOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        android:fontFamily="@font/ubuntu_bold"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:fitsSystemWindows="true"-->
+<!--        android:minHeight="?attr/actionBarSize"-->
+<!--        app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"-->
+
+<!--        android:background="?attr/colorPrimary">-->
+
+<!--    </androidx.appcompat.widget.Toolbar>-->
+
+
 
         <androidx.recyclerview.widget.RecyclerView
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:background="#F6F5F5"
             android:id="@+id/activity_main_rv"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 
-    </androidx.core.widget.NestedScrollView>
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        android:text="Play The  Audio"
-        android:id="@+id/record_button"
-        />
-"
+<!--    <Button-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        android:text="Play The  Audio"-->
+<!--        android:id="@+id/record_button"-->
+<!--        />-->
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginBottom="20dp"
+            android:layout_marginEnd="20dp"
+            android:id="@+id/floatingActionButton"
+            android:layout_width="wrap_content"
+
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:backgroundTint="#E6DD3D"
+
+            android:src="@drawable/baseline_call_24" />
+
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
