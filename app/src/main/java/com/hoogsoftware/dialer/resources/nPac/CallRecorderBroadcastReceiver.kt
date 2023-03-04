@@ -40,7 +40,7 @@ class CallRecorderBroadcastReceiver : BroadcastReceiver() {
 
 
         val lifecycleOwner = context as? LifecycleOwner
-       // lifecycleOwner?.lifecycleScope?.launch {
+        lifecycleOwner?.lifecycleScope?.launch {
             if (intent?.action == "android.intent.action.PHONE_STATE") {
                 val state = intent.getStringExtra(TelephonyManager.EXTRA_STATE)
                 if (state == TelephonyManager.EXTRA_STATE_RINGING) {
@@ -59,7 +59,7 @@ class CallRecorderBroadcastReceiver : BroadcastReceiver() {
             }
 
             // Your code to be executed in the new thread
-      //  }
+        }
 
 
 
