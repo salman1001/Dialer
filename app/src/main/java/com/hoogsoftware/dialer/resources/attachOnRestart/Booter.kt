@@ -1,12 +1,10 @@
 package com.hoogsoftware.dialer.resources.attachOnRestart
 
-import android.app.Application
 import android.content.BroadcastReceiver
 import android.content.ContentValues.TAG
 import android.content.Context
 import android.content.Intent
 import android.util.Log
-import androidx.core.content.ContextCompat.startActivity
 
 
 class Booter : BroadcastReceiver() {

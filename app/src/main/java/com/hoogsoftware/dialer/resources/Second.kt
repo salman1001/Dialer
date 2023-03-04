@@ -254,12 +254,12 @@ class Second : AppCompatActivity() {
             str_call_date = dateFormatter.format(Date(str_call_full_date!!.toLong()))
             //   Toast.makeText(this,str_contact_name+"     "+str_call_duration,Toast.LENGTH_LONG).show()
             val timeFormatter = SimpleDateFormat("HH:mm:ss")
-            var text:TextView = findViewById(R.id.tt)
+          //  var text:TextView = findViewById(R.id.tt)
             //  text.append("phone number =  $str_contact_name\n"  )
             str_call_time = timeFormatter.format(Date(str_call_full_date!!.toLong()))
             //str_call_time = getFormatedDateTime(str_call_time, "HH:mm:ss", "hh:mm ss");
             str_call_duration = DurationFormat(str_call_duration)
-            text.append(str_contact_name+"     "+str_call_duration+"   "+str_call_date)
+          //  text.append(str_contact_name+"     "+str_call_duration+"   "+str_call_date)
 
             str_call_type = when (str_call_type!!.toInt()) {
                 CallLog.Calls.INCOMING_TYPE -> "Incoming"
